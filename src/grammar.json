@@ -211,23 +211,35 @@
         "type": "CHOICE",
         "members": [
           {
-            "type": "SYMBOL",
-            "name": "quoted_line"
+            "type": "PREC",
+            "value": 1,
+            "content": {
+              "type": "SYMBOL",
+              "name": "quoted_line"
+            }
           },
           {
             "type": "SYMBOL",
             "name": "body_line"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "empty_line"
           }
         ]
       }
     },
-    "body_line": {
-      "type": "PATTERN",
-      "value": "[^\\n]+"
-    },
     "quoted_line": {
       "type": "PATTERN",
-      "value": ">.*"
+      "value": ">[^\\n]*\\n"
+    },
+    "body_line": {
+      "type": "PATTERN",
+      "value": "[^\\n]*\\n"
+    },
+    "empty_line": {
+      "type": "PATTERN",
+      "value": "\\n"
     }
   },
   "extras": [

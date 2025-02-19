@@ -35,9 +35,14 @@ export default grammar({
     quoted_string: (_$) => /"[^"\\\n]+"/,
     email: (_$) => /<[^<>]+>/,
 
+    // ISSUE: quoted linex are not being detected
     body_separator: (_$) => /\n/,
-    body: ($) => repeat1(choice($.quoted_line, $.body_line)),
-    body_line: (_$) => /[^\n]+/,
-    quoted_line: (_$) => />.*/,
+    body: ($) => repeat1(choice(
+      prec(1, $.quoted_line),
+      $.body_line,
+      $.empty_line)),
+    quoted_line: (_$) => />[^\n]*\n/,
+    body_line: (_$) => /[^\n]*\n/,
+    empty_line: (_$) => /\n/,
   },
 })

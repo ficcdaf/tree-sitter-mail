@@ -24,6 +24,7 @@ Hello world
     (email))
   (body_separator)
   (body
-	(_body_line)
+	(body_line)
+    (empty_line)
 	(quoted_line)
 	(quoted_line)))

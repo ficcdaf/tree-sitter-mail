@@ -12,11 +12,25 @@
           "named": true
         },
         {
+          "type": "empty_line",
+          "named": true
+        },
+        {
           "type": "quoted_line",
           "named": true
         }
       ]
     }
+  },
+  {
+    "type": "body_separator",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "empty_line",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "header_email",
@@ -162,10 +176,6 @@
   },
   {
     "type": "body_line",
-    "named": true
-  },
-  {
-    "type": "body_separator",
     "named": true
   },
   {
