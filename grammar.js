@@ -18,7 +18,7 @@ export default grammar({
   rules: {
     source_file: ($) => seq($._headers, optional(seq($.body_separator, $.body))),
 
-    _headers: ($) => repeat1(seq($._header, $.newline)),
+    _headers: ($) => repeat1(seq($._header, NEWLINE)),
 
     _header: ($) => choice(prec(1, $.header_email), prec(1, $.header_subject), $.header_other),
     header_email: ($) =>
@@ -36,16 +36,17 @@ export default grammar({
     quoted_string: (_$) => /"[^"\\\n]+"/,
     email: (_$) => /<[^<>]+>/,
 
-    body_separator: ($) => $.newline,
+    body_separator: (_$) => NEWLINE,
     body: ($) => repeat1(choice(
-      prec(1, $.quoted_line),
-      $.body_line,
-      $.empty_line)),
+      prec(3, $.empty_line),
+      prec(2, $.quoted_line),
+      prec(1, $.body_line),
+    )),
 
-    quoted_line: ($) => seq('>', /[^\r\n]*/, $.newline),
-    body_line: ($) => seq(/[^\r\n]*/, $.newline),
-    empty_line: ($) => $.newline,
+    quoted_line: (_$) => seq('>', /[^\r\n]*/, NEWLINE),
+    body_line: (_$) => seq(/[^\r\n>].*/, NEWLINE),
+    empty_line: (_$) => NEWLINE,
 
-    newline: (_$) => NEWLINE,
+    // newline: (_$) => NEWLINE,
   },
 })

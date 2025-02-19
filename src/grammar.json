@@ -42,8 +42,8 @@
             "name": "_header"
           },
           {
-            "type": "SYMBOL",
-            "name": "newline"
+            "type": "PATTERN",
+            "value": "\\r?\\n"
           }
         ]
       }
@@ -202,8 +202,8 @@
       "value": "<[^<>]+>"
     },
     "body_separator": {
-      "type": "SYMBOL",
-      "name": "newline"
+      "type": "PATTERN",
+      "value": "\\r?\\n"
     },
     "body": {
       "type": "REPEAT1",
@@ -212,19 +212,27 @@
         "members": [
           {
             "type": "PREC",
-            "value": 1,
+            "value": 3,
+            "content": {
+              "type": "SYMBOL",
+              "name": "empty_line"
+            }
+          },
+          {
+            "type": "PREC",
+            "value": 2,
             "content": {
               "type": "SYMBOL",
               "name": "quoted_line"
             }
           },
           {
-            "type": "SYMBOL",
-            "name": "body_line"
-          },
-          {
-            "type": "SYMBOL",
-            "name": "empty_line"
+            "type": "PREC",
+            "value": 1,
+            "content": {
+              "type": "SYMBOL",
+              "name": "body_line"
+            }
           }
         ]
       }
@@ -241,8 +249,8 @@
           "value": "[^\\r\\n]*"
         },
         {
-          "type": "SYMBOL",
-          "name": "newline"
+          "type": "PATTERN",
+          "value": "\\r?\\n"
         }
       ]
     },
@@ -251,19 +259,15 @@
       "members": [
         {
           "type": "PATTERN",
-          "value": "[^\\r\\n]*"
+          "value": "[^\\r\\n>].*"
         },
         {
-          "type": "SYMBOL",
-          "name": "newline"
+          "type": "PATTERN",
+          "value": "\\r?\\n"
         }
       ]
     },
     "empty_line": {
-      "type": "SYMBOL",
-      "name": "newline"
-    },
-    "newline": {
       "type": "PATTERN",
       "value": "\\r?\\n"
     }
