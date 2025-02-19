@@ -8,7 +8,7 @@
 (header_separator) @punctuation.delimiter
 
 (header_subject
-  (header_unstructured) @markup.heading)
+  (header_unstructured) @markup.bold)
 (header_other
   (header_unstructured) @comment)
 
@@ -19,5 +19,8 @@
 ; currently this includes the wrapping <>, can we change this?
 (email) @string
 
-; (header_subject) @markup.heading
-; (header_other) @markup.environment
+(body
+  (quoted_line
+    (quote_marker) @punctuation.special
+    (quote_contents) @markup.quote))
+
