@@ -42,8 +42,8 @@
             "name": "_header"
           },
           {
-            "type": "STRING",
-            "value": "\n"
+            "type": "SYMBOL",
+            "name": "newline"
           }
         ]
       }
@@ -202,8 +202,8 @@
       "value": "<[^<>]+>"
     },
     "body_separator": {
-      "type": "PATTERN",
-      "value": "\\n"
+      "type": "SYMBOL",
+      "name": "newline"
     },
     "body": {
       "type": "REPEAT1",
@@ -230,16 +230,42 @@
       }
     },
     "quoted_line": {
-      "type": "PATTERN",
-      "value": ">[^\\n]*\\n"
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": ">"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[^\\r\\n]*"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "newline"
+        }
+      ]
     },
     "body_line": {
-      "type": "PATTERN",
-      "value": "[^\\n]*\\n"
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "PATTERN",
+          "value": "[^\\r\\n]*"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "newline"
+        }
+      ]
     },
     "empty_line": {
+      "type": "SYMBOL",
+      "name": "newline"
+    },
+    "newline": {
       "type": "PATTERN",
-      "value": "\\n"
+      "value": "\\r?\\n"
     }
   },
   "extras": [

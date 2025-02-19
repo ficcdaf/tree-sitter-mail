@@ -9,6 +9,7 @@
 
 const SPECIAL = /[()<>@,;:\\".\[\]]/
 const CTL = /[\x00-\x1f\x7f]/
+const NEWLINE = /\r?\n/
 
 export default grammar({
   name: 'mail',
@@ -17,7 +18,7 @@ export default grammar({
   rules: {
     source_file: ($) => seq($._headers, optional(seq($.body_separator, $.body))),
 
-    _headers: ($) => repeat1(seq($._header, '\n')),
+    _headers: ($) => repeat1(seq($._header, $.newline)),
 
     _header: ($) => choice(prec(1, $.header_email), prec(1, $.header_subject), $.header_other),
     header_email: ($) =>
@@ -35,13 +36,16 @@ export default grammar({
     quoted_string: (_$) => /"[^"\\\n]+"/,
     email: (_$) => /<[^<>]+>/,
 
-    body_separator: (_$) => /\n/,
+    body_separator: ($) => $.newline,
     body: ($) => repeat1(choice(
       prec(1, $.quoted_line),
       $.body_line,
       $.empty_line)),
-    quoted_line: (_$) => />[^\n]*\n/,
-    body_line: (_$) => /[^\n]*\n/,
-    empty_line: (_$) => /\n/,
+
+    quoted_line: ($) => seq('>', /[^\r\n]*/, $.newline),
+    body_line: ($) => seq(/[^\r\n]*/, $.newline),
+    empty_line: ($) => $.newline,
+
+    newline: (_$) => NEWLINE,
   },
 })

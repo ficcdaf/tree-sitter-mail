@@ -1,2 +1,3 @@
 [editor.lsp]
 display-inlay-hints = false
+auto-signature-help = false

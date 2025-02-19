@@ -23,14 +23,49 @@
     }
   },
   {
+    "type": "body_line",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "newline",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "body_separator",
     "named": true,
-    "fields": {}
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "newline",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "empty_line",
     "named": true,
-    "fields": {}
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "newline",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "header_email",
@@ -115,13 +150,28 @@
     }
   },
   {
+    "type": "quoted_line",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "newline",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "source_file",
     "named": true,
     "root": true,
     "fields": {},
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
           "type": "body",
@@ -142,12 +192,16 @@
         {
           "type": "header_subject",
           "named": true
+        },
+        {
+          "type": "newline",
+          "named": true
         }
       ]
     }
   },
   {
-    "type": "\n",
+    "type": ">",
     "named": false
   },
   {
@@ -175,10 +229,6 @@
     "named": true
   },
   {
-    "type": "body_line",
-    "named": true
-  },
-  {
     "type": "email",
     "named": true
   },
@@ -199,7 +249,7 @@
     "named": true
   },
   {
-    "type": "quoted_line",
+    "type": "newline",
     "named": true
   },
   {
