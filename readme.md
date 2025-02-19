@@ -4,26 +4,21 @@
 
 I created this fork mainly to add `.eml` support to Helix. However, the original grammar is a bit lacking so I've also decided to expand it a bit, to support things like unique highlighting for quoted replies in the body text.
 
-Although at the time of forking, the grammar was using ABI 14, tree-sitter's default is 15. So, I decided it would be better for me to maintain an ABI 14 version of the grammar which we can be confident won't be upgraded (and thus exclude Helix support).
+Although at the time of forking, the grammar was using ABI 14, tree-sitter's default is 15. So, I decided it would be better for me to maintain an ABI 14 version of the grammar which we can be confident won't be upgraded.
 
-## _lazy.nvim_ Install
+## Improvements Over Original
 
-Add to _tree-sitter_ config:
+- Added support for carriage return (`\r\n`) newlines.
+  - The previous parser broke if line endings weren't UNIX style.
+  - Carriage returns are very common in email files.
+  - They're also used by External Editor Revived, which is the primary use case for this parser.
+- Added rules for quoted blocks.
+  - Quoted blocks are used in reply emails.
+  - Users may want to highlight these differently.
+  - This also opens the door to text object queries for easily operating on quote blocks.
 
-```lua
-{
-  'nvim-treesitter/nvim-treesitter',
-  -- ...
-  dependencies = {
-    'stevenxxiu/tree-sitter-mail',
-  },
-  -- ...
-}
-```
+## Planned Improvements
 
-To parse the body, in e.g. _Markdown_, add to `~/.config/nvim/after/queries/mail/injections.scm`:
-
-```query
-((body) @injection.content
- (#set! injection.language "markdown"))
-```
+- Support nested quote blocks.
+- Add distinction between email address marker `<>` and the actual address string.
+  - Allows the marker to be highlighted differently, helps for cleaner reading of the file.
