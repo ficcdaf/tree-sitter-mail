@@ -25,6 +25,5 @@ Hello world
   (body_separator)
   (body
 	(_body_line)
-	(_body_line)
 	(quoted_line)
 	(quoted_line)))
