@@ -17,10 +17,14 @@
       {
         "name": "Steven Xu",
         "email": "stevenxxiu@gmail.com"
+      },
+      {
+        "name": "Daniel Fichtinger",
+        "email": "daniel@ficd.ca"
       }
     ],
     "links": {
-      "repository": "https://github.com/stevenxxiu/tree-sitter-mail"
+      "repository": "https://github.com/ficcdaf/tree-sitter-mail"
     }
   },
   "bindings": {
