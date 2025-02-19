@@ -36,8 +36,8 @@ export default grammar({
     email: (_$) => /<[^<>]+>/,
 
     body_separator: (_$) => /\n/,
-    body: (_$) => repeat1(choice($.quoted_line, $._body_line)),
-    _body_line: (_$) => /[^\n]*/,
+    body: ($) => repeat1(choice($.quoted_line, $.body_line)),
+    body_line: (_$) => /[^\n]+/,
     quoted_line: (_$) => />.*/,
   },
 })

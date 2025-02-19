@@ -1,5 +1,24 @@
 [
   {
+    "type": "body",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "body_line",
+          "named": true
+        },
+        {
+          "type": "quoted_line",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "header_email",
     "named": true,
     "fields": {},
@@ -142,7 +161,7 @@
     "named": true
   },
   {
-    "type": "body",
+    "type": "body_line",
     "named": true
   },
   {
@@ -167,6 +186,10 @@
   },
   {
     "type": "header_unstructured",
+    "named": true
+  },
+  {
+    "type": "quoted_line",
     "named": true
   },
   {

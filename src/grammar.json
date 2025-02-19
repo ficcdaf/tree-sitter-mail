@@ -206,8 +206,28 @@
       "value": "\\n"
     },
     "body": {
+      "type": "REPEAT1",
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "quoted_line"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "body_line"
+          }
+        ]
+      }
+    },
+    "body_line": {
       "type": "PATTERN",
-      "value": "(.|\\n)*"
+      "value": "[^\\n]+"
+    },
+    "quoted_line": {
+      "type": "PATTERN",
+      "value": ">.*"
     }
   },
   "extras": [
