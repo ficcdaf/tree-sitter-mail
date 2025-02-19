@@ -43,10 +43,17 @@ export default grammar({
       prec(1, $.body_line),
     )),
 
-    quoted_line: (_$) => seq('>', /[^\r\n]*/, NEWLINE),
+    // quoted_line: (_$) => seq('>', /[^\r\n]*/, NEWLINE),
+    quoted_line: ($) =>
+      seq(
+        $.quote_marker,
+        $.quote_contents,
+        NEWLINE
+      ),
+    quote_marker: (_$) => token('>'),
+    quote_contents: (_$) => token(/[^\r\n]*/),
     body_line: (_$) => seq(/[^\r\n>].*/, NEWLINE),
     empty_line: (_$) => NEWLINE,
 
-    // newline: (_$) => NEWLINE,
   },
 })

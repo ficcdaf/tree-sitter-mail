@@ -122,7 +122,21 @@
   {
     "type": "quoted_line",
     "named": true,
-    "fields": {}
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "quote_contents",
+          "named": true
+        },
+        {
+          "type": "quote_marker",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "source_file",
@@ -155,10 +169,6 @@
         }
       ]
     }
-  },
-  {
-    "type": ">",
-    "named": false
   },
   {
     "type": "Bcc",
@@ -202,6 +212,14 @@
   },
   {
     "type": "header_unstructured",
+    "named": true
+  },
+  {
+    "type": "quote_contents",
+    "named": true
+  },
+  {
+    "type": "quote_marker",
     "named": true
   },
   {

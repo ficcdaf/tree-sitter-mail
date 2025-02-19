@@ -241,18 +241,32 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "STRING",
-          "value": ">"
+          "type": "SYMBOL",
+          "name": "quote_marker"
         },
         {
-          "type": "PATTERN",
-          "value": "[^\\r\\n]*"
+          "type": "SYMBOL",
+          "name": "quote_contents"
         },
         {
           "type": "PATTERN",
           "value": "\\r?\\n"
         }
       ]
+    },
+    "quote_marker": {
+      "type": "TOKEN",
+      "content": {
+        "type": "STRING",
+        "value": ">"
+      }
+    },
+    "quote_contents": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "[^\\r\\n]*"
+      }
     },
     "body_line": {
       "type": "SEQ",

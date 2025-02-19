@@ -33,8 +33,8 @@ enum ts_symbol_identifiers {
   sym_atom = 11,
   sym_quoted_string = 12,
   sym_email = 13,
-  anon_sym_GT = 14,
-  aux_sym_quoted_line_token1 = 15,
+  sym_quote_marker = 14,
+  sym_quote_contents = 15,
   aux_sym_body_line_token1 = 16,
   sym_source_file = 17,
   aux_sym__headers = 18,
@@ -67,8 +67,8 @@ static const char * const ts_symbol_names[] = {
   [sym_atom] = "atom",
   [sym_quoted_string] = "quoted_string",
   [sym_email] = "email",
-  [anon_sym_GT] = ">",
-  [aux_sym_quoted_line_token1] = "quoted_line_token1",
+  [sym_quote_marker] = "quote_marker",
+  [sym_quote_contents] = "quote_contents",
   [aux_sym_body_line_token1] = "body_line_token1",
   [sym_source_file] = "source_file",
   [aux_sym__headers] = "_headers",
@@ -101,8 +101,8 @@ static const TSSymbol ts_symbol_map[] = {
   [sym_atom] = sym_atom,
   [sym_quoted_string] = sym_quoted_string,
   [sym_email] = sym_email,
-  [anon_sym_GT] = anon_sym_GT,
-  [aux_sym_quoted_line_token1] = aux_sym_quoted_line_token1,
+  [sym_quote_marker] = sym_quote_marker,
+  [sym_quote_contents] = sym_quote_contents,
   [aux_sym_body_line_token1] = aux_sym_body_line_token1,
   [sym_source_file] = sym_source_file,
   [aux_sym__headers] = aux_sym__headers,
@@ -177,13 +177,13 @@ static const TSSymbolMetadata ts_symbol_metadata[] = {
     .visible = true,
     .named = true,
   },
-  [anon_sym_GT] = {
+  [sym_quote_marker] = {
     .visible = true,
-    .named = false,
+    .named = true,
   },
-  [aux_sym_quoted_line_token1] = {
-    .visible = false,
-    .named = false,
+  [sym_quote_contents] = {
+    .visible = true,
+    .named = true,
   },
   [aux_sym_body_line_token1] = {
     .visible = false,
@@ -708,22 +708,22 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
       ACCEPT_TOKEN(sym_email);
       END_STATE();
     case 70:
-      ACCEPT_TOKEN(anon_sym_GT);
+      ACCEPT_TOKEN(sym_quote_marker);
       END_STATE();
     case 71:
-      ACCEPT_TOKEN(anon_sym_GT);
+      ACCEPT_TOKEN(sym_quote_marker);
       if (lookahead != 0 &&
           lookahead != '\n') ADVANCE(76);
       END_STATE();
     case 72:
-      ACCEPT_TOKEN(aux_sym_quoted_line_token1);
+      ACCEPT_TOKEN(sym_quote_contents);
       if (lookahead == ' ') ADVANCE(72);
       if (lookahead != 0 &&
           lookahead != '\n' &&
           lookahead != '\r') ADVANCE(73);
       END_STATE();
     case 73:
-      ACCEPT_TOKEN(aux_sym_quoted_line_token1);
+      ACCEPT_TOKEN(sym_quote_contents);
       if (lookahead != 0 &&
           lookahead != '\n' &&
           lookahead != '\r') ADVANCE(73);
@@ -799,7 +799,7 @@ static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
     [sym_atom] = ACTIONS(1),
     [sym_quoted_string] = ACTIONS(1),
     [sym_email] = ACTIONS(1),
-    [anon_sym_GT] = ACTIONS(1),
+    [sym_quote_marker] = ACTIONS(1),
   },
   [STATE(1)] = {
     [sym_source_file] = STATE(22),
@@ -877,7 +877,7 @@ static const uint16_t ts_small_parse_table[] = {
     ACTIONS(26), 1,
       aux_sym__headers_token1,
     ACTIONS(28), 1,
-      anon_sym_GT,
+      sym_quote_marker,
     ACTIONS(30), 1,
       aux_sym_body_line_token1,
     STATE(23), 1,
@@ -893,7 +893,7 @@ static const uint16_t ts_small_parse_table[] = {
     ACTIONS(34), 1,
       aux_sym__headers_token1,
     ACTIONS(37), 1,
-      anon_sym_GT,
+      sym_quote_marker,
     ACTIONS(40), 1,
       aux_sym_body_line_token1,
     STATE(6), 4,
@@ -905,7 +905,7 @@ static const uint16_t ts_small_parse_table[] = {
     ACTIONS(26), 1,
       aux_sym__headers_token1,
     ACTIONS(28), 1,
-      anon_sym_GT,
+      sym_quote_marker,
     ACTIONS(30), 1,
       aux_sym_body_line_token1,
     ACTIONS(43), 1,
@@ -949,26 +949,26 @@ static const uint16_t ts_small_parse_table[] = {
       ts_builtin_sym_end,
     ACTIONS(64), 3,
       aux_sym__headers_token1,
-      anon_sym_GT,
+      sym_quote_marker,
       aux_sym_body_line_token1,
   [150] = 2,
     ACTIONS(66), 1,
       ts_builtin_sym_end,
     ACTIONS(68), 3,
       aux_sym__headers_token1,
-      anon_sym_GT,
+      sym_quote_marker,
       aux_sym_body_line_token1,
   [159] = 2,
     ACTIONS(70), 1,
       ts_builtin_sym_end,
     ACTIONS(72), 3,
       aux_sym__headers_token1,
-      anon_sym_GT,
+      sym_quote_marker,
       aux_sym_body_line_token1,
   [168] = 1,
     ACTIONS(74), 3,
       aux_sym__headers_token1,
-      anon_sym_GT,
+      sym_quote_marker,
       aux_sym_body_line_token1,
   [174] = 1,
     ACTIONS(76), 1,
@@ -1002,7 +1002,7 @@ static const uint16_t ts_small_parse_table[] = {
       aux_sym__headers_token1,
   [214] = 1,
     ACTIONS(96), 1,
-      aux_sym_quoted_line_token1,
+      sym_quote_contents,
   [218] = 1,
     ACTIONS(98), 1,
       aux_sym__headers_token1,
