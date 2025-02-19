@@ -223,7 +223,7 @@
             "value": 2,
             "content": {
               "type": "SYMBOL",
-              "name": "quoted_line"
+              "name": "quote_block"
             }
           },
           {
@@ -235,6 +235,17 @@
             }
           }
         ]
+      }
+    },
+    "quote_block": {
+      "type": "PREC_LEFT",
+      "value": 0,
+      "content": {
+        "type": "REPEAT1",
+        "content": {
+          "type": "SYMBOL",
+          "name": "quoted_line"
+        }
       }
     },
     "quoted_line": {

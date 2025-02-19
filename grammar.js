@@ -39,11 +39,11 @@ export default grammar({
     body_separator: (_$) => NEWLINE,
     body: ($) => repeat1(choice(
       prec(3, $.empty_line),
-      prec(2, $.quoted_line),
+      prec(2, $.quote_block),
       prec(1, $.body_line),
     )),
 
-    // quoted_line: (_$) => seq('>', /[^\r\n]*/, NEWLINE),
+    quote_block: ($) => prec.left(repeat1($.quoted_line)),
     quoted_line: ($) =>
       seq(
         $.quote_marker,

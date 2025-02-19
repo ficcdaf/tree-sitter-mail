@@ -16,7 +16,7 @@
           "named": true
         },
         {
-          "type": "quoted_line",
+          "type": "quote_block",
           "named": true
         }
       ]
@@ -114,6 +114,21 @@
         },
         {
           "type": "header_unstructured",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "quote_block",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "quoted_line",
           "named": true
         }
       ]
