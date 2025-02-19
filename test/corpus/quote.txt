@@ -1,0 +1,30 @@
+===
+quote
+===
+From: name1 <user1@example.com>
+To: name2 <user2@example.com>
+
+Hello world
+
+> Please tell me,
+> What's the first programming task?
+
+---
+
+(source_file
+  (header_email
+    (header_field_email)
+    (header_separator)
+    (atom)
+    (email))
+  (header_email
+    (header_field_email)
+    (header_separator)
+    (atom)
+    (email))
+  (body_separator)
+  (body
+	(_body_line)
+	(_body_line)
+	(quoted_line)
+	(quoted_line)))
