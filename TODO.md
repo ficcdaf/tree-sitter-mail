@@ -1,0 +1,3 @@
+- [ ] Add nested quote block rules
+- [ ] Add rules for address marker `<>`
+- [ ] Add further parsing to body text? Like URL detection for highlighting?
