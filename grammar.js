@@ -35,7 +35,6 @@ export default grammar({
     quoted_string: (_$) => /"[^"\\\n]+"/,
     email: (_$) => /<[^<>]+>/,
 
-    // TODO: Update tests
     body_separator: (_$) => /\n/,
     body: ($) => repeat1(choice(
       prec(1, $.quoted_line),
