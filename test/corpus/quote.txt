@@ -35,7 +35,6 @@ Hello world
 	(body_block)
 	(quote_block
         (quote_marker)
-        (quote_contents))
-	(quote_block
-      (quote_marker)
+        (quote_contents)
+        (quote_marker)
         (quote_contents))))

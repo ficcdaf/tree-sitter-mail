@@ -53,7 +53,8 @@ export default grammar({
       prec(1, $.body_block),
     )),
 
-    quote_block: ($) => prec.left(repeat1($._quoted_line)),
+    // quote_block: ($) => prec.left(repeat1($._quoted_line)),
+    quote_block: ($) => prec.right(seq($._quoted_line, repeat($._quoted_line))),
     _quoted_line: ($) =>
       seq(
         $.quote_marker,
