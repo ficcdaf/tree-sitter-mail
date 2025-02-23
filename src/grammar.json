@@ -315,10 +315,6 @@
         {
           "type": "SYMBOL",
           "name": "quote_contents"
-        },
-        {
-          "type": "PATTERN",
-          "value": "\\r?\\n"
         }
       ]
     },

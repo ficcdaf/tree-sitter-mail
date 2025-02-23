@@ -9,4 +9,5 @@
 
 ; (quote_block) @comment.inside
 ; (quote_contents) @comment.inside
-(quote_block) @comment.around
+(quote_block) @comment.inside
+(quote_block)+ @comment.around

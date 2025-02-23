@@ -59,7 +59,7 @@ export default grammar({
       seq(
         $.quote_marker,
         $.quote_contents,
-        NEWLINE
+        // NEWLINE
       ),
     quote_marker: (_$) => token('>'),
     quote_contents: (_$) => token(/[^\r\n]*/),
