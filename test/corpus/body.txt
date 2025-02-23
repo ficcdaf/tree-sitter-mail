@@ -21,4 +21,4 @@ Hello world
     (email))
   (body_separator)
   (body
-    (body_line)))
+    (body_block)))

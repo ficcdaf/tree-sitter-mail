@@ -38,13 +38,13 @@ export default grammar({
 
     body_separator: (_$) => NEWLINE,
     body: ($) => repeat1(choice(
-      prec(3, $.empty_line),
+      prec(3, $._empty_line),
       prec(2, $.quote_block),
-      prec(1, $.body_line),
+      prec(1, $.body_block),
     )),
 
-    quote_block: ($) => prec.left(repeat1($.quoted_line)),
-    quoted_line: ($) =>
+    quote_block: ($) => prec.left(repeat1($._quoted_line)),
+    _quoted_line: ($) =>
       seq(
         $.quote_marker,
         $.quote_contents,
@@ -52,8 +52,9 @@ export default grammar({
       ),
     quote_marker: (_$) => token('>'),
     quote_contents: (_$) => token(/[^\r\n]*/),
-    body_line: (_$) => seq(/[^\r\n>].*/, NEWLINE),
-    empty_line: (_$) => NEWLINE,
+    body_block: ($) => prec.left(repeat1($._body_line)),
+    _body_line: (_$) => seq(/[^\r\n>].*/, NEWLINE),
+    _empty_line: (_$) => NEWLINE,
 
   },
 })

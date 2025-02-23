@@ -5,14 +5,10 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
         {
-          "type": "body_line",
-          "named": true
-        },
-        {
-          "type": "empty_line",
+          "type": "body_block",
           "named": true
         },
         {
@@ -23,17 +19,12 @@
     }
   },
   {
-    "type": "body_line",
+    "type": "body_block",
     "named": true,
     "fields": {}
   },
   {
     "type": "body_separator",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "empty_line",
     "named": true,
     "fields": {}
   },
@@ -121,21 +112,6 @@
   },
   {
     "type": "quote_block",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "quoted_line",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "quoted_line",
     "named": true,
     "fields": {},
     "children": {

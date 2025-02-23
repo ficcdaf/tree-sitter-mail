@@ -24,13 +24,10 @@ Hello world
     (email))
   (body_separator)
   (body
-	(body_line)
-    (empty_line)
+	(body_block)
 	(quote_block
-      (quoted_line
         (quote_marker)
-        (quote_contents)))
+        (quote_contents))
 	(quote_block
-      (quoted_line
       (quote_marker)
-        (quote_contents)))))
+        (quote_contents))))

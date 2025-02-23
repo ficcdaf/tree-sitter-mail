@@ -215,7 +215,7 @@
             "value": 3,
             "content": {
               "type": "SYMBOL",
-              "name": "empty_line"
+              "name": "_empty_line"
             }
           },
           {
@@ -231,7 +231,7 @@
             "value": 1,
             "content": {
               "type": "SYMBOL",
-              "name": "body_line"
+              "name": "body_block"
             }
           }
         ]
@@ -244,11 +244,11 @@
         "type": "REPEAT1",
         "content": {
           "type": "SYMBOL",
-          "name": "quoted_line"
+          "name": "_quoted_line"
         }
       }
     },
-    "quoted_line": {
+    "_quoted_line": {
       "type": "SEQ",
       "members": [
         {
@@ -279,7 +279,18 @@
         "value": "[^\\r\\n]*"
       }
     },
-    "body_line": {
+    "body_block": {
+      "type": "PREC_LEFT",
+      "value": 0,
+      "content": {
+        "type": "REPEAT1",
+        "content": {
+          "type": "SYMBOL",
+          "name": "_body_line"
+        }
+      }
+    },
+    "_body_line": {
       "type": "SEQ",
       "members": [
         {
@@ -292,7 +303,7 @@
         }
       ]
     },
-    "empty_line": {
+    "_empty_line": {
       "type": "PATTERN",
       "value": "\\r?\\n"
     }
