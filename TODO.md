@@ -1,4 +1,4 @@
-- [ ] Add nested quote block rules
-- [ ] Add rules for address marker `<>`
-- [ ] Add rule for highlighting punctuation/delimiters inside email addresses?
+- [x] Add rules for address marker `<>`
+- [x] Add rule for highlighting punctuation/delimiters inside email addresses?
+- [ ] Fix quote blocks grouping into collection node
 - [ ] Add further parsing to body text? Like URL detection for highlighting?
