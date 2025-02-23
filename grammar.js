@@ -22,7 +22,7 @@ export default grammar({
 
     _header: ($) => choice(prec(1, $.header_email), prec(1, $.header_subject), $.header_other),
     header_email: ($) =>
-      seq($.header_field_email, $.header_separator, repeat(choice($.atom, $.quoted_string)), optional($.email)),
+      seq($.header_field_email, $.header_separator, optional($.atom_block), optional($.email)),
     header_other: ($) => seq($.header_field, $.header_separator, $.header_unstructured),
     header_subject: ($) => seq($.header_field_subject, $.header_separator, $.header_unstructured),
 
@@ -32,6 +32,7 @@ export default grammar({
     header_field_subject: (_$) => 'Subject',
     header_unstructured: (_$) => /.*/,
 
+    atom_block: ($) => repeat1(choice($.atom, $.quoted_string)),
     atom: (_$) => new RegExp(`[^${SPECIAL.source.slice(1, -1)}\\s${CTL.source.slice(1, -1)}]+`),
     quoted_string: (_$) => /"[^"\\\n]+"/,
     email: (_$) => /<[^<>]+>/,

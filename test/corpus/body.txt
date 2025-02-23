@@ -12,12 +12,14 @@ Hello world
   (header_email
     (header_field_email)
     (header_separator)
-    (atom)
+    (atom_block
+      (atom))
     (email))
   (header_email
     (header_field_email)
     (header_separator)
-    (atom)
+    (atom_block
+      (atom))
     (email))
   (body_separator)
   (body

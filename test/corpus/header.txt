@@ -10,15 +10,17 @@ To: name1 "name <>" name3 <user2@example.com>
   (header_email
     (header_field_email)
     (header_separator)
-    (atom)
-    (atom)
+    (atom_block
+      (atom)
+      (atom))
     (email))
   (header_email
     (header_field_email)
     (header_separator)
-    (atom)
-    (quoted_string)
-    (atom)
+    (atom_block
+      (atom)
+      (quoted_string)
+      (atom))
     (email)))
 
 ===
@@ -44,7 +46,8 @@ From: name1
   (header_email
     (header_field_email)
     (header_separator)
-    (atom)))
+    (atom_block
+      (atom))))
 
 ===
 header-subject
