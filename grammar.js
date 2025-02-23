@@ -39,7 +39,6 @@ export default grammar({
     quoted_string: (_$) => /"[^"\\\n]+"/,
     email_delimiter: (_$) => choice(token('>'), token('<')),
     email_address: (_$) => EMAIL,
-    // email_block: (_$) => /<[^<>]+>/,
     email: ($) => seq(
       $.email_delimiter,
       $.email_address,
@@ -53,17 +52,17 @@ export default grammar({
       prec(1, $.body_block),
     )),
 
-    // quote_block: ($) => prec.left(repeat1($._quoted_line)),
-    quote_block: ($) => prec.right(seq($._quoted_line, repeat($._quoted_line))),
+    quote_block: ($) => prec.right(repeat1($._quoted_line)),
+    // quote_block: ($) => prec.right(seq($._quoted_line, repeat($._quoted_line))),
     _quoted_line: ($) =>
       seq(
         $.quote_marker,
         $.quote_contents,
-        // NEWLINE
+        NEWLINE,
       ),
     quote_marker: (_$) => token('>'),
     quote_contents: (_$) => token(/[^\r\n]*/),
-    body_block: ($) => prec.left(repeat1($._body_line)),
+    body_block: ($) => prec.right(repeat1($._body_line)),
     _body_line: (_$) => seq(/[^\r\n>].*/, NEWLINE),
     _empty_line: (_$) => NEWLINE,
 
