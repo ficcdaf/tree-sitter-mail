@@ -21,7 +21,6 @@
 
 (body
   (quote_block
-    (quoted_line
       (quote_marker) @punctuation.special
-      (quote_contents) @markup.quote)))
+      (quote_contents) @markup.quote))
 
