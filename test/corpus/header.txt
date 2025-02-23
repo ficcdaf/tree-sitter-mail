@@ -13,7 +13,10 @@ To: name1 "name <>" name3 <user2@example.com>
     (atom_block
       (atom)
       (atom))
-    (email))
+    (email
+      (email_delimiter)
+      (email_address)
+      (email_delimiter)))
   (header_email
     (header_field_email)
     (header_separator)
@@ -21,7 +24,10 @@ To: name1 "name <>" name3 <user2@example.com>
       (atom)
       (quoted_string)
       (atom))
-    (email)))
+    (email
+      (email_delimiter)
+      (email_address)
+      (email_delimiter))))
 
 ===
 header-empty

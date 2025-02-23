@@ -1,6 +1,7 @@
 /**
  * @file Email parser
  * @author Steven Xu <stevenxxiu@gmail.com>
+ * @author Daniel Fichtinger <daniel@ficd.ca>
  * @license MIT
  */
 
@@ -10,6 +11,7 @@
 const SPECIAL = /[()<>@,;:\\".\[\]]/
 const CTL = /[\x00-\x1f\x7f]/
 const NEWLINE = /\r?\n/
+const EMAIL = /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/
 
 export default grammar({
   name: 'mail',
@@ -35,7 +37,14 @@ export default grammar({
     atom_block: ($) => repeat1(choice($.atom, $.quoted_string)),
     atom: (_$) => new RegExp(`[^${SPECIAL.source.slice(1, -1)}\\s${CTL.source.slice(1, -1)}]+`),
     quoted_string: (_$) => /"[^"\\\n]+"/,
-    email: (_$) => /<[^<>]+>/,
+    email_delimiter: (_$) => choice(token('>'), token('<')),
+    email_address: (_$) => EMAIL,
+    // email_block: (_$) => /<[^<>]+>/,
+    email: ($) => seq(
+      $.email_delimiter,
+      $.email_address,
+      $.email_delimiter,
+    ),
 
     body_separator: (_$) => NEWLINE,
     body: ($) => repeat1(choice(

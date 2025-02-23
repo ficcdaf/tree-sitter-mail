@@ -6,6 +6,7 @@
 ] @keyword
 
 (header_separator) @punctuation.delimiter
+(email_delimiter) @punctuation.delimiter
 
 (header_subject
   (header_unstructured) @markup.bold)

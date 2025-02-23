@@ -48,6 +48,30 @@
     "fields": {}
   },
   {
+    "type": "email",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "email_address",
+          "named": true
+        },
+        {
+          "type": "email_delimiter",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "email_delimiter",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "header_email",
     "named": true,
     "fields": {},
@@ -145,6 +169,11 @@
     }
   },
   {
+    "type": "quote_marker",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "source_file",
     "named": true,
     "root": true,
@@ -177,6 +206,14 @@
     }
   },
   {
+    "type": "<",
+    "named": false
+  },
+  {
+    "type": ">",
+    "named": false
+  },
+  {
     "type": "Bcc",
     "named": false
   },
@@ -201,7 +238,7 @@
     "named": true
   },
   {
-    "type": "email",
+    "type": "email_address",
     "named": true
   },
   {
@@ -222,10 +259,6 @@
   },
   {
     "type": "quote_contents",
-    "named": true
-  },
-  {
-    "type": "quote_marker",
     "named": true
   },
   {
