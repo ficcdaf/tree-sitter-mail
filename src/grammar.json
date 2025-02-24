@@ -139,6 +139,13 @@
           "name": "header_separator"
         },
         {
+          "type": "TOKEN",
+          "content": {
+            "type": "STRING",
+            "value": " "
+          }
+        },
+        {
           "type": "SYMBOL",
           "name": "subject"
         }

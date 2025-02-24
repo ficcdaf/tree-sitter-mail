@@ -26,7 +26,7 @@ export default grammar({
     header_email: ($) =>
       seq($.header_field_email, $.header_separator, optional($.atom_block), optional($.email)),
     header_other: ($) => seq($.header_field, $.header_separator, $.header_unstructured),
-    header_subject: ($) => seq($.header_field_subject, $.header_separator, $.subject),
+    header_subject: ($) => seq($.header_field_subject, $.header_separator, token(' '), $.subject),
 
     header_separator: (_$) => ':',
     header_field: (_$) => new RegExp(`[^${CTL.source.slice(1, -1)}\\s:]+`),
