@@ -23,6 +23,9 @@ Although at the time of forking, the grammar was using ABI 14, tree-sitter's def
   - Names, addresses, and other fields in headers are `entry`.
   - Subject and body paragraphs are `function`.
   - Quoted replies are `comment`.
+- Added support for email-only headers (no Name)
+  - Also fixed capitalized email addresses.
+  - Thanks to [die1465](https://github.com/die1465) for helping with the regex.
 
 ### Workarounds
 
