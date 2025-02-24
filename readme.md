@@ -11,14 +11,23 @@ Although at the time of forking, the grammar was using ABI 14, tree-sitter's def
 - Added support for carriage return (`\r\n`) newlines.
   - The previous parser broke if line endings weren't UNIX style.
   - Carriage returns are very common in email files.
-  - They're also used by External Editor Revived, which is the primary use case for this parser.
+  - They're also used by External Editor Revived.
 - Added rules for quoted blocks.
   - Quoted blocks are used in reply emails.
   - Users may want to highlight these differently.
   - This also opens the door to text object queries for easily operating on quote blocks.
+- Added distinction between email address delimiter and address.
+- Improved error detection on malformed headers.
+- Added highlight queries (for Helix).
+- Added text object queries (for Helix).
+  - Names, addresses, and other fields in headers are `entry`.
+  - Subject and body paragraphs are `function`.
+  - Quoted replies are `comment`.
 
-## Planned Improvements
+### Workarounds
 
-- Support nested quote blocks.
-- Add distinction between email address marker `<>` and the actual address string.
-  - Allows the marker to be highlighted differently, helps for cleaner reading of the file.
+For some reason, Helix was refusing to treat the last node in the file as a valid text object unless it was followed by a newline. This is why `quote_group` exists. I know it's redundant, but I couldn't get this working in Helix otherwise.
+
+# Contributions
+
+More than welcome. Please contribute. I am going clinically insane.
