@@ -24,8 +24,13 @@ export default grammar({
 
     _header: ($) => choice(prec(1, $.header_email), prec(1, $.header_subject), $.header_other),
     header_email: ($) =>
-      seq($.header_field_email, $.header_separator, optional($.atom_block), optional($.email)),
-    header_other: ($) => seq($.header_field, $.header_separator, $.header_unstructured),
+      seq($.header_field_email,
+        $.header_separator,
+        choice(
+          seq(token(' '), choice(seq($.atom_block, $.email), $.email, $.atom_block)),
+          optional(token(' ')),
+        )),
+    header_other: ($) => seq($.header_field, $.header_separator, choice(optional(token(' ')), seq(token(' '), $.header_unstructured))),
     header_subject: ($) => seq($.header_field_subject, $.header_separator, token(' '), $.subject),
 
     header_separator: (_$) => ':',
