@@ -31,7 +31,7 @@
           "named": true
         },
         {
-          "type": "quote_block",
+          "type": "quote_group",
           "named": true
         }
       ]
@@ -150,7 +150,27 @@
     }
   },
   {
-    "type": "quote_block",
+    "type": "quote_group",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "quoted_block",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "quote_marker",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "quoted_block",
     "named": true,
     "fields": {},
     "children": {
@@ -167,11 +187,6 @@
         }
       ]
     }
-  },
-  {
-    "type": "quote_marker",
-    "named": true,
-    "fields": {}
   },
   {
     "type": "source_file",

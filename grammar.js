@@ -48,16 +48,18 @@ export default grammar({
     body_separator: (_$) => NEWLINE,
     body: ($) => repeat1(choice(
       prec(3, $._empty_line),
-      prec(2, $.quote_block),
+      prec(2, $.quote_group),
       prec(1, $.body_block),
     )),
 
-    quote_block: ($) => prec.right(repeat1($._quoted_line)),
-    // quote_block: ($) => prec.right(seq($._quoted_line, repeat($._quoted_line))),
+    quote_group: ($) => prec.right(repeat1($._quoted_line)),
+    quoted_block: ($) => seq(
+      $.quote_marker,
+      $.quote_contents
+    ),
     _quoted_line: ($) =>
       seq(
-        $.quote_marker,
-        $.quote_contents,
+        $.quoted_block,
         NEWLINE,
       ),
     quote_marker: (_$) => token('>'),

@@ -271,7 +271,7 @@
             "value": 2,
             "content": {
               "type": "SYMBOL",
-              "name": "quote_block"
+              "name": "quote_group"
             }
           },
           {
@@ -285,7 +285,7 @@
         ]
       }
     },
-    "quote_block": {
+    "quote_group": {
       "type": "PREC_RIGHT",
       "value": 0,
       "content": {
@@ -296,7 +296,7 @@
         }
       }
     },
-    "_quoted_line": {
+    "quoted_block": {
       "type": "SEQ",
       "members": [
         {
@@ -306,6 +306,15 @@
         {
           "type": "SYMBOL",
           "name": "quote_contents"
+        }
+      ]
+    },
+    "_quoted_line": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "quoted_block"
         },
         {
           "type": "PATTERN",

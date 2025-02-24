@@ -20,8 +20,6 @@
 ; currently this includes the wrapping <>, can we change this?
 (email) @string
 
-(body
-  (quote_block
-      (quote_marker) @punctuation.special
-      (quote_contents) @markup.quote))
+(quote_marker) @punctuation.special
+(quote_contents) @markup.quote
 

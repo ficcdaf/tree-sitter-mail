@@ -33,8 +33,10 @@ Hello world
   (body_separator)
   (body
 	(body_block)
-	(quote_block
+    (quote_group
+      (quoted_block
         (quote_marker)
-        (quote_contents)
+        (quote_contents))
+      (quoted_block
         (quote_marker)
-        (quote_contents))))
+        (quote_contents)))))

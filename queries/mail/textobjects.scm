@@ -3,11 +3,7 @@
 
 (email_address) @entry.around
 
-; (header_subject
-;   (header_unstructured) @entry.around)
-(header_unstructured) @entry.around
+(quoted_block)+ @comment.around
+; ((quote_marker)+(quote_contents)+)+ @comment.around
 
-; (quote_block) @comment.inside
-; (quote_contents) @comment.inside
-(quote_block) @comment.inside
-(quote_block)+ @comment.around
+(body_block)+ @function.around
