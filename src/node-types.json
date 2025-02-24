@@ -143,11 +143,16 @@
           "named": true
         },
         {
-          "type": "header_unstructured",
+          "type": "subject",
           "named": true
         }
       ]
     }
+  },
+  {
+    "type": "header_unstructured",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "quote_group",
@@ -221,6 +226,11 @@
     }
   },
   {
+    "type": "subject",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "<",
     "named": false
   },
@@ -266,10 +276,6 @@
   },
   {
     "type": "header_separator",
-    "named": true
-  },
-  {
-    "type": "header_unstructured",
     "named": true
   },
   {

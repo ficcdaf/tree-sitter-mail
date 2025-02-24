@@ -66,7 +66,7 @@ Subject: some "subject
   (header_subject
     (header_field_subject)
     (header_separator)
-    (header_unstructured)))
+    (subject)))
 
 ===
 header-other

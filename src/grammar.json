@@ -140,7 +140,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "header_unstructured"
+          "name": "subject"
         }
       ]
     },
@@ -182,6 +182,10 @@
       "value": "Subject"
     },
     "header_unstructured": {
+      "type": "PATTERN",
+      "value": ".*"
+    },
+    "subject": {
       "type": "PATTERN",
       "value": ".*"
     },

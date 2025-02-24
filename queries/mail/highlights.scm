@@ -9,7 +9,7 @@
 (email_delimiter) @punctuation.delimiter
 
 (header_subject
-  (header_unstructured) @markup.bold)
+  (subject) @markup.bold)
 (header_other
   (header_unstructured) @comment)
 
