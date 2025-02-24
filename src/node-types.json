@@ -88,6 +88,10 @@
           "named": true
         },
         {
+          "type": "email_address",
+          "named": true
+        },
+        {
           "type": "header_field_email",
           "named": true
         },

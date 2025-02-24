@@ -120,6 +120,10 @@
                     {
                       "type": "SYMBOL",
                       "name": "atom_block"
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "email_address"
                     }
                   ]
                 }

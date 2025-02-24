@@ -27,7 +27,7 @@ export default grammar({
       seq($.header_field_email,
         $.header_separator,
         choice(
-          seq(token(' '), choice(seq($.atom_block, $.email), $.email, $.atom_block)),
+          seq(token(' '), choice(seq($.atom_block, $.email), $.email, $.atom_block, $.email_address)),
           optional(token(' ')),
         )),
     header_other: ($) => seq($.header_field, $.header_separator, choice(optional(token(' ')), seq(token(' '), $.header_unstructured))),

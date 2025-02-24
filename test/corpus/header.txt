@@ -55,6 +55,33 @@ From: name1
     (atom_block
       (atom))))
 
+      
+===
+header-email-only
+===
+From: person@test.com
+
+---
+
+(source_file
+  (header_email
+    (header_field_email)
+    (header_separator)
+    (email_address)))
+
+===
+header-email-capitalized
+===
+From: PERSON@TEST.COM
+
+---
+
+(source_file
+  (header_email
+    (header_field_email)
+    (header_separator)
+    (email_address)))
+
 ===
 header-subject
 ===
