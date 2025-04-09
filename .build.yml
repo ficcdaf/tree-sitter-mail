@@ -1,0 +1,16 @@
+image: alpine/latest
+packages:
+  - git
+  - openssh
+secrets:
+  - 0639564d-6995-4e2e-844b-2f8feb0b7fb1
+environment:
+  srht_repo: tree-sitter-mail
+  github_repo: tree-sitter-mail
+  github: git@github.com:ficcdaf
+tasks:
+  - mirror: |
+      ssh-keyscan github.com >> ~/.ssh/known_hosts
+      cd "$srht_repo"
+      git remote add github "$github/$github_repo.git"
+      git push --mirror github
