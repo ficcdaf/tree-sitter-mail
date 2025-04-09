@@ -32,3 +32,13 @@ Hello world
   (body_separator)
   (body
     (body_block)))
+===
+no-headers
+===
+Hello world
+
+---
+
+(source_file
+  (body
+    (body_block)))

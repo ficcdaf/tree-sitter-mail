@@ -18,7 +18,10 @@ export default grammar({
   extras: (_$) => [' '],
 
   rules: {
-    source_file: ($) => seq($._headers, optional(seq($.body_separator, $.body))),
+    source_file: ($) => choice(
+      seq($._headers, optional(seq($.body_separator, $.body))),
+      seq(optional($.body_separator), $.body)
+    ),
 
     _headers: ($) => repeat1(seq($._header, NEWLINE)),
 
