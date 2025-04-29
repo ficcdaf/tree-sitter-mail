@@ -18,7 +18,7 @@ export default grammar({
   extras: (_$) => [' '],
 
   rules: {
-    source_file: ($) => seq($._headers, optional(seq($.body_separator, $.body))),
+    source_file: ($) => seq($._headers, optional(seq($.body_separator, $.body, optional(seq($.signature_separator, $.signature))))),
 
     _headers: ($) => repeat1(seq($._header, NEWLINE)),
 
@@ -74,5 +74,11 @@ export default grammar({
     _body_line: (_$) => seq(/[^\r\n>].*/, NEWLINE),
     _empty_line: (_$) => NEWLINE,
 
+    signature_separator: (_$) => seq(/-- \n/, NEWLINE),
+    signature: ($) => repeat1(choice(
+      prec(2, $._empty_line),
+      prec(1, $.signature_block),
+    )),
+    signature_block: ($) => prec.right(repeat1($._body_line)),
   },
 })

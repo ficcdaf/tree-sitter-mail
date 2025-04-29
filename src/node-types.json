@@ -198,6 +198,31 @@
     }
   },
   {
+    "type": "signature",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "signature_block",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "signature_block",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "signature_separator",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "source_file",
     "named": true,
     "root": true,
@@ -224,6 +249,14 @@
         },
         {
           "type": "header_subject",
+          "named": true
+        },
+        {
+          "type": "signature",
+          "named": true
+        },
+        {
+          "type": "signature_separator",
           "named": true
         }
       ]
