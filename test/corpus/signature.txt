@@ -1,0 +1,40 @@
+===
+signature
+===
+From: name1 <user1@example.com>
+To: name2 <user2@example.com>
+
+Hello world
+
+-- 
+This is the signature
+
+---
+
+(source_file
+  (header_email
+    (header_field_email)
+    (header_separator)
+    (atom_block
+      (atom))
+    (email
+      (email_delimiter)
+      (email_address)
+      (email_delimiter)))
+
+  (header_email
+    (header_field_email)
+    (header_separator)
+    (atom_block
+      (atom))
+    (email
+      (email_delimiter)
+      (email_address)
+      (email_delimiter)))
+
+  (body_separator)
+  (body
+    (body_block))
+  (signature_separator)
+  (signature
+    (signature_block)))
